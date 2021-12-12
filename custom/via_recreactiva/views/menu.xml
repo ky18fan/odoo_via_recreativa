@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright © Via Recreactiva - All Rights Reserved
+# Author      Christian Daniel Medina Herrera
+-->
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="root"
+              name="Menu Via Recreactiva"
+              sequence="10"
+              web_icon="via_recreactiva,static/description/icon.png"/>
+    <menuitem id="reporte_accidentes"
+              name="Reporte de Accidentes"
+              action="action_reporte_accidentes"
+              sequence="0"
+              parent="root"/>
+</odoo>

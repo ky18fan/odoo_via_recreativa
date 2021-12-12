@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright © Via Recreactiva - All Rights Reserved
+# Author      Christian Daniel Medina Herrera
+-->
+<odoo>
+    <data>
+
+        <!-- Tree view -->
+
+        <record id="view_reporte_accidentes_tree" model="ir.ui.view">
+            <field name="name">reporte.accidentes.tree</field>
+            <field name="model">reporte.accidentes</field>
+            <field name="arch" type="xml">
+                <tree string="Reporte de Accidentes">
+                    <field name="name"/>
+                    <field name="fecha"/>
+                    <field name="jornada"/>
+                    <field name="tramo"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view -->
+
+        <record id="view_reporte_accidentes_form" model="ir.ui.view">
+            <field name="name">reporte.accidentesform</field>
+            <field name="model">reporte.accidentes</field>
+            <field name="arch" type="xml">
+                <form string="Reporte de Accidentes">
+                    <sheet>
+                        <div class="oe_title">
+                            <field name="id" invisible="1"/>
+                            <h1>Reporte de Accidentes<field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                              <field name="fecha"/>
+                              <field name="jornada"/>
+                              <field name="tramo"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"
+                               widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"
+                               options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search view -->
+        <record id="reporte_accidentes_search_view" model="ir.ui.view">
+          <field name="name">reporte.accidentes.search</field>
+          <field name="model">reporte.accidentes</field>
+          <field name="arch" type="xml">
+            <search string="Vista de busqueda de reportes de accidentes">
+              <field name="name" string="Reportes de Accidentes" filter_domain="[('name','ilike',self)]"/>
+              <field name="fecha"/>
+              <field name="jornada"/>
+              <field name="tramo"/>
+            </search>
+          </field>
+        </record>
+
+        <record id="action_reporte_accidentes" model="ir.actions.act_window">
+            <field name="name">Reporte de accidentes</field>
+            <field name="res_model">reporte.accidentes</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="reporte_accidentes_search_view"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Cree un reporte de accidentes
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
